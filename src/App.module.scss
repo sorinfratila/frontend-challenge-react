@@ -1,5 +1,44 @@
-.App {
+.container {
   height: 100vh;
   width: 100vw;
   background-color: white;
+  margin: 0 auto;
+
+  .container__wrapper {
+    height: 100vh;
+    width: 100vw;
+    transition: all 0.5s ease-in-out;
+    margin: 0 auto;
+    overflow: hidden;
+
+    .header {
+      top: 0;
+      height: 20px;
+      width: 100%;
+      background-color: white;
+      position: fixed;
+    }
+
+    .footer {
+      bottom: 0;
+      height: 20px;
+      width: 100%;
+      background-color: white;
+      position: fixed;
+    }
+
+    .container__scroll {
+      margin: 20px 0 0 0;
+      height: calc(100vh - 40px);
+      transition: all 0.5s ease-in-out;
+    }
+
+    @media (min-width: 600px) {
+      width: 60vw;
+    }
+
+    @media (min-width: 1870px) {
+      width: 40vw;
+    }
+  }
 }

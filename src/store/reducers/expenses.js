@@ -2,15 +2,27 @@ import actions from '../actions/actionTypes';
 
 const initialState = {
   expenses: [],
-  language: 'en',
+  totalEntries: 0,
+  isLoading: false,
+  pages: [],
+  currentPage: 1,
 };
 
 const expenses = (state = initialState, action) => {
   switch (action.type) {
-    case actions.GET_EXPENSES: {
+    case actions.GET_EXPENSES_REQUEST: {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+    case actions.GET_EXPENSES_SUCCESS: {
       return {
         ...state,
         expenses: action.expenses,
+        totalEntries: action.totalEntries,
+        isLoading: false,
+        pages: action.pages,
       };
     }
     default: {
