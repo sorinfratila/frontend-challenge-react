@@ -1,7 +1,10 @@
-import { takeEvery } from 'redux-saga/effects';
+import { takeEvery, all } from 'redux-saga/effects';
 import actions from '../actions/actionTypes';
-import { getExpensesSaga } from './expenses';
+import { getExpensesSaga, changePageSaga } from './expenses';
 
 export function* watchExpenses() {
-  yield takeEvery(actions.GET_EXPENSES_REQUEST, getExpensesSaga);
+  yield all([
+    takeEvery(actions.GET_EXPENSES_REQUEST, getExpensesSaga),
+    takeEvery(actions.CHANGE_PAGE_REQUEST, changePageSaga),
+  ]);
 }

@@ -1,1 +1,6 @@
-export { getExpenses, getExpensesSuccess } from './expenses';
+export {
+  getExpenses,
+  getExpensesSuccess,
+  changePage,
+  changePageSuccess,
+} from './expenses';

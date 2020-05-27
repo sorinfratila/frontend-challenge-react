@@ -25,6 +25,19 @@ const expenses = (state = initialState, action) => {
         pages: action.pages,
       };
     }
+    case actions.CHANGE_PAGE_REQUEST: {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+    case actions.CHANGE_PAGE_SUCCESS: {
+      return {
+        ...state,
+        isLoading: false,
+        currentPage: action.currentPage,
+      };
+    }
     default: {
       return state;
     }

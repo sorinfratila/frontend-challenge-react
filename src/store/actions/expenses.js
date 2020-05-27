@@ -18,3 +18,17 @@ export const getExpensesSuccess = (expenses, total, pages) => {
     pages,
   };
 };
+
+export const changePage = page => {
+  return {
+    type: actions.CHANGE_PAGE_REQUEST,
+    page,
+  };
+};
+
+export const changePageSuccess = page => {
+  return {
+    type: actions.CHANGE_PAGE_SUCCESS,
+    currentPage: page,
+  };
+};
