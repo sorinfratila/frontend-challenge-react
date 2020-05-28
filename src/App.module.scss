@@ -1,37 +1,21 @@
 .container {
   height: 100vh;
   width: 100vw;
-  background-color: white;
+  transition: all 0.5s ease-in-out;
   margin: 0 auto;
+  overflow: hidden;
 
-  .container__wrapper {
-    height: 100vh;
-    width: 100vw;
-    transition: all 0.5s ease-in-out;
+  .header {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    top: 0;
+    height: 40px;
     margin: 0 auto;
-    overflow: hidden;
-
-    .header {
-      top: 0;
-      height: 20px;
-      width: 100%;
-      background-color: white;
-      position: fixed;
-    }
-
-    .footer {
-      bottom: 0;
-      height: 20px;
-      width: 100%;
-      background-color: white;
-      position: fixed;
-    }
-
-    .container__scroll {
-      margin: 20px 0 0 0;
-      height: calc(100vh - 40px);
-      transition: all 0.5s ease-in-out;
-    }
+    padding: 0 5px;
+    background-color: white;
+    position: fixed;
 
     @media (min-width: 600px) {
       width: 60vw;
@@ -40,5 +24,38 @@
     @media (min-width: 1870px) {
       width: 40vw;
     }
+  }
+
+  .container__scroll {
+    padding: 5px 0 0 0;
+    margin: 40px 0 0 0;
+    height: calc(100vh - 85px);
+    transition: all 0.5s ease-in-out;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    height: 40px;
+    position: fixed;
+    overflow-x: auto;
+
+    @media (min-width: 600px) {
+      width: 60vw;
+    }
+
+    @media (min-width: 1870px) {
+      width: 40vw;
+    }
+  }
+
+  @media (min-width: 600px) {
+    width: 60vw;
+  }
+
+  @media (min-width: 1870px) {
+    width: 40vw;
   }
 }
