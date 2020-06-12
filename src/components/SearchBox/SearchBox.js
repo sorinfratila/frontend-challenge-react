@@ -1,20 +1,66 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { debounce } from 'lodash';
+// import { debounce } from 'lodash';
+
 import classes from './SearchBox.module.scss';
+import { getExpenses } from '../../store/actions';
+import * as actions from '../../store/actions/index';
+import axios from '../../axios/axios-expenses';
 
-function SearchBox() {
-  const [value, setValue] = useState('');
+const debounce = (cb, delay) => {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => cb(...args), delay);
+  };
+};
 
-  const callAPI = () => {
-    console.log('asdfasdf');
+function SearchBox({ onSetExpenses, onGetExpenses }) {
+  const [searchValue, setValue] = useState('');
+
+  const callAPI = async searchTerm => {
+    if (searchTerm.length >= 2) {
+      const link = `?limit=${10000}&offset=0`;
+
+      try {
+        const allExpenses = await axios.get(`/expenses${link}`);
+
+        const res = allExpenses.data.expenses.filter(el => {
+          const {
+            user: { first, last, email },
+            merchant,
+            amount: { currency, value },
+          } = el;
+
+          return (
+            first.toLowerCase().search(searchTerm.toLowerCase()) > -1 ||
+            (email &&
+              email.toLowerCase().search(searchTerm.toLowerCase()) > -1) ||
+            last.toLowerCase().search(searchTerm.toLowerCase()) > -1 ||
+            merchant.toLowerCase().search(searchTerm.toLowerCase()) > -1 ||
+            currency.toLowerCase().search(searchTerm.toLowerCase()) > -1 ||
+            value.toLowerCase().search(searchTerm.toLowerCase()) > -1
+          );
+        });
+
+        onSetExpenses({ expenses: res, total: 168, pages: [1] });
+      } catch (e) {
+        console.log(e);
+      }
+    } else {
+      onGetExpenses({ offset: 0, limit: 25 });
+    }
   };
 
-  const [debouncedCallAPI] = useState(() => debounce(callAPI, 250));
+  const debouncedCallAPI = useCallback(
+    debounce(value => callAPI(value), 250),
+    []
+  );
 
   function handleChange(value) {
     setValue(value);
-    debouncedCallAPI();
+    debouncedCallAPI(value);
   }
 
   return (
@@ -23,14 +69,30 @@ function SearchBox() {
       type="search"
       placeholder="Search"
       onChange={e => handleChange(e.target.value)}
-      value={value}
+      value={searchValue}
     />
   );
 }
 
+const mapStateToProps = state => {
+  return {
+    totalEntries: state.totalEntries,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onSetExpenses: payload => dispatch(actions.setExpenses(payload)),
+    onGetExpenses: payload => dispatch(actions.getExpenses(payload)),
+  };
+};
+
 SearchBox.propTypes = {
   onChange: PropTypes.func,
   searchVal: PropTypes.string,
+  totalEntries: PropTypes.number,
+  onSetExpenses: PropTypes.func,
+  onGetExpenses: PropTypes.func,
 };
 
-export default SearchBox;
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBox);

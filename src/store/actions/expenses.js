@@ -19,6 +19,15 @@ export const getExpensesSuccess = (expenses, total, pages) => {
   };
 };
 
+export const setExpenses = ({ expenses, total, pages }) => {
+  return {
+    type: actions.SET_EXPENSES,
+    expenses,
+    totalEntries: total,
+    pages,
+  };
+};
+
 export const changePage = page => {
   return {
     type: actions.CHANGE_PAGE_REQUEST,

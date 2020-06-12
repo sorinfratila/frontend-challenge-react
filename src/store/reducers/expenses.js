@@ -38,6 +38,14 @@ const expenses = (state = initialState, action) => {
         currentPage: action.currentPage,
       };
     }
+    case actions.SET_EXPENSES: {
+      return {
+        ...state,
+        expenses: action.expenses,
+        total: action.totalEntries,
+        pages: action.pages,
+      };
+    }
     default: {
       return state;
     }

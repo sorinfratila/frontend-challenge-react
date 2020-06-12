@@ -3,4 +3,5 @@ export {
   getExpensesSuccess,
   changePage,
   changePageSuccess,
+  setExpenses,
 } from './expenses';
