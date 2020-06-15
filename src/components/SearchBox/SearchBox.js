@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import { debounce } from 'lodash';
 
 import classes from './SearchBox.module.scss';
-import { getExpenses } from '../../store/actions';
 import * as actions from '../../store/actions/index';
 import axios from '../../axios/axios-expenses';
 
