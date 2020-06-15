@@ -47,7 +47,7 @@ function SearchBox({ onSetExpenses, onGetExpenses }) {
         console.log(e);
       }
     } else {
-      onGetExpenses({ offset: 0, limit: 25 });
+      onGetExpenses({ offset: 0, limit: 35 });
     }
   };
 
@@ -65,7 +65,7 @@ function SearchBox({ onSetExpenses, onGetExpenses }) {
     <input
       className={classes.search}
       type="search"
-      placeholder="Search"
+      placeholder="Min 2 char search"
       onChange={e => handleChange(e.target.value)}
       value={searchValue}
     />

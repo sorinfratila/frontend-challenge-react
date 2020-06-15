@@ -29,7 +29,7 @@ export function* getExpensesSaga({ payload }) {
 
 export function* changePageSaga({ page }) {
   try {
-    const payload = { limit: 25, offset: (page - 1) * 25 };
+    const payload = { limit: 35, offset: (page - 1) * 35 };
     yield put(actions.getExpenses(payload));
     yield put(actions.changePageSuccess(page));
   } catch (e) {

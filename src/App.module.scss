@@ -16,6 +16,7 @@
     padding: 0 5px;
     background-color: white;
     position: fixed;
+    transition: all 0.5s ease-in-out;
 
     @media (min-width: 600px) {
       width: 60vw;

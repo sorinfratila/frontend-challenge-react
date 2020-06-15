@@ -8,13 +8,15 @@ import classes from './Expenses.module.scss';
 
 function Expenses({ onGetExpenses, isLoading, expenses }) {
   useEffect(() => {
-    onGetExpenses({ limit: 25, offset: 0 });
+    onGetExpenses({ limit: 35, offset: 0 });
   }, [onGetExpenses]);
 
   let expensesEl = <Spinner />;
 
   !isLoading &&
     (expensesEl = expenses.map(ex => <Expense expense={ex} key={ex.id} />));
+
+  !expenses.length && (expensesEl = <p>No matches</p>);
 
   return <div className={classes.container}>{expensesEl}</div>;
 }
