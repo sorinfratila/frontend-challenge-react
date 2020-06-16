@@ -2,8 +2,8 @@ import React, { useState, useCallback } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import classes from './SearchBox.module.scss';
 import * as actions from '../../store/actions/index';
+import Input from '../UI/Input/Input';
 
 const debounce = (cb, delay) => {
   let timer;
@@ -14,7 +14,14 @@ const debounce = (cb, delay) => {
 };
 
 function SearchBox({ onSetExpenses, onGetExpenses, allExpenses }) {
-  const [searchValue, setValue] = useState('');
+  const [search, setValue] = useState({
+    elementType: 'input',
+    elementConfig: {
+      type: 'search',
+      placeholder: 'Min 2 char search',
+    },
+    value: '',
+  });
 
   const callAPI = async searchTerm => {
     if (searchTerm.length >= 2) {
@@ -50,17 +57,16 @@ function SearchBox({ onSetExpenses, onGetExpenses, allExpenses }) {
   );
 
   function handleChange(value) {
-    setValue(value);
+    setValue({ ...search, value });
     debouncedCallAPI(value);
   }
 
   return (
-    <input
-      className={classes.search}
-      type="search"
-      placeholder="Min 2 char search"
-      onChange={e => handleChange(e.target.value)}
-      value={searchValue}
+    <Input
+      elementType={search.elementType}
+      elementConfig={search.elementConfig}
+      value={search.value}
+      changed={e => handleChange(e.target.value)}
     />
   );
 }
@@ -80,7 +86,6 @@ const mapDispatchToProps = dispatch => {
 
 SearchBox.propTypes = {
   onChange: PropTypes.func,
-  searchVal: PropTypes.string,
   totalEntries: PropTypes.number,
   onSetExpenses: PropTypes.func,
   onGetExpenses: PropTypes.func,

@@ -9,7 +9,6 @@ function App() {
     <div className={classes.container}>
       <div className={classes.header}>
         <Filters />
-        <div>filters</div>
       </div>
       <div className={classes.container__scroll}>
         <Expenses />

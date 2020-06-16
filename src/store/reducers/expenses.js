@@ -42,7 +42,7 @@ const expenses = (state = initialState, action) => {
       return {
         ...state,
         expenses: action.expenses,
-        total: action.totalEntries,
+        totalEntries: action.totalEntries,
         pages: action.pages,
       };
     }
