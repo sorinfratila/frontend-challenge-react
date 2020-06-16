@@ -2,13 +2,13 @@ import React from 'react';
 import classes from './App.module.scss';
 import Expenses from './containers/Expenses/Expenses';
 import Pagination from './components/Pagination/Pagination';
-import SearchBox from './components/SearchBox/SearchBox';
+import Filters from './containers/Filters/Filters';
 
 function App() {
   return (
     <div className={classes.container}>
       <div className={classes.header}>
-        <SearchBox />
+        <Filters />
         <div>filters</div>
       </div>
       <div className={classes.container__scroll}>

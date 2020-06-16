@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 import classes from './SearchBox.module.scss';
 import * as actions from '../../store/actions/index';
-import axios from '../../axios/axios-expenses';
 
 const debounce = (cb, delay) => {
   let timer;
@@ -14,46 +13,40 @@ const debounce = (cb, delay) => {
   };
 };
 
-function SearchBox({ onSetExpenses, onGetExpenses }) {
+function SearchBox({ onSetExpenses, onGetExpenses, allExpenses }) {
   const [searchValue, setValue] = useState('');
 
   const callAPI = async searchTerm => {
     if (searchTerm.length >= 2) {
-      const link = `?limit=${10000}&offset=0`;
+      const res = allExpenses.filter(el => {
+        const {
+          user: { first, last, email },
+          merchant,
+          amount: { currency, value },
+        } = el;
 
-      try {
-        const allExpenses = await axios.get(`/expenses${link}`);
+        return (
+          first.toLowerCase().search(searchTerm.toLowerCase()) > -1 ||
+          (email &&
+            email.toLowerCase().search(searchTerm.toLowerCase()) > -1) ||
+          last.toLowerCase().search(searchTerm.toLowerCase()) > -1 ||
+          merchant.toLowerCase().search(searchTerm.toLowerCase()) > -1 ||
+          currency.toLowerCase().search(searchTerm.toLowerCase()) > -1 ||
+          value.toLowerCase().search(searchTerm.toLowerCase()) > -1
+        );
+      });
 
-        const res = allExpenses.data.expenses.filter(el => {
-          const {
-            user: { first, last, email },
-            merchant,
-            amount: { currency, value },
-          } = el;
-
-          return (
-            first.toLowerCase().search(searchTerm.toLowerCase()) > -1 ||
-            (email &&
-              email.toLowerCase().search(searchTerm.toLowerCase()) > -1) ||
-            last.toLowerCase().search(searchTerm.toLowerCase()) > -1 ||
-            merchant.toLowerCase().search(searchTerm.toLowerCase()) > -1 ||
-            currency.toLowerCase().search(searchTerm.toLowerCase()) > -1 ||
-            value.toLowerCase().search(searchTerm.toLowerCase()) > -1
-          );
-        });
-
-        onSetExpenses({ expenses: res, total: 168, pages: [1] });
-      } catch (e) {
-        console.log(e);
-      }
+      onSetExpenses({ expenses: res, total: 168, pages: [1] });
+    } else if (searchTerm.length === 1) {
+      // do nothing
     } else {
       onGetExpenses({ offset: 0, limit: 35 });
     }
   };
 
   const debouncedCallAPI = useCallback(
-    debounce(value => callAPI(value), 250),
-    []
+    debounce(value => callAPI(value), 500),
+    [allExpenses]
   );
 
   function handleChange(value) {
@@ -91,6 +84,7 @@ SearchBox.propTypes = {
   totalEntries: PropTypes.number,
   onSetExpenses: PropTypes.func,
   onGetExpenses: PropTypes.func,
+  allExpenses: PropTypes.array,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBox);
