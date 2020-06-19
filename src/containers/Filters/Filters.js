@@ -31,17 +31,26 @@ function Filters() {
     };
 
     updatedFormElement.value = event.target.value;
-    updatedFormElement[inputIdentifier] = updatedFormElement;
+    updatedFilters[inputIdentifier] = updatedFormElement;
     setFilters(updatedFilters);
   };
 
-  const setOptions = filter => {};
+  // setting the filter options after interating through the DB data
+  const setFilterOptions = options => {
+    return [...options].map(el => {
+      return {
+        name: el,
+        value: el,
+      };
+    });
+  };
 
+  // Sets containing all the years and currencies in the DB
   const date = new Set();
   const currency = new Set();
 
+  // getting all expenses on mount to handle search and filters
   useEffect(() => {
-    // getting all expenses once to handle search and filters
     const getAllExpenses = async () => {
       try {
         const {
@@ -52,6 +61,24 @@ function Filters() {
         expenses.forEach(ex => {
           date.add(new Date(ex.date).getFullYear());
           currency.add(ex.amount.currency);
+        });
+
+        setFilters({
+          ...filters,
+          date: {
+            ...filters.date,
+            elementConfig: {
+              ...filters.date.elementConfig,
+              options: setFilterOptions(date),
+            },
+          },
+          currency: {
+            ...filters.currency,
+            elementConfig: {
+              ...filters.currency.elementConfig,
+              options: setFilterOptions(currency),
+            },
+          },
         });
       } catch (e) {
         console.log(e);
@@ -71,16 +98,19 @@ function Filters() {
   }
 
   const filtersEl = (
-    <div>
-      {filtersArr.map(filter => (
-        <Input
-          key={filter.id}
-          elementConfig={filter.config.elementConfig}
-          elementType={filter.config.elementType}
-          value={filter.config.value}
-          changed={event => inputChangedHandler(event, filter.id)}
-        />
-      ))}
+    <div className={classes.filter_container}>
+      {filtersArr.map(filter => {
+        return (
+          <Input
+            label={filter.id}
+            key={filter.id}
+            elementConfig={filter.config.elementConfig}
+            elementType={filter.config.elementType}
+            value={filter.config.value}
+            changed={event => inputChangedHandler(event, filter.id)}
+          />
+        );
+      })}
     </div>
   );
 

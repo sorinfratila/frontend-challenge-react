@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classes from './Input.module.scss';
 
-function Input(props) {
+function Input({ elementConfig, elementType, value, changed, label }) {
   let inputElement = null;
   const inputClasses = [classes.Input];
 
@@ -10,30 +10,32 @@ function Input(props) {
   //   inputClasses.push(classes.Invalid);
   // }
 
-  switch (props.elementType) {
+  switch (elementType) {
     case 'input': {
       inputElement = (
         <input
           className={inputClasses.join(' ')}
-          {...props.elementConfig}
-          value={props.value}
-          onChange={props.changed}
+          {...elementConfig}
+          value={value}
+          onChange={changed}
         />
       );
       break;
     }
     case 'select': {
       inputElement = (
-        <select
-          className={inputClasses.join(' ')}
-          value={props.value}
-          onChange={props.changed}>
-          {props.elementConfig.options.map(option => (
-            <option key={option.value} value={option.value}>
-              {option.name}
-            </option>
-          ))}
-        </select>
+        <div className={classes.select_container}>
+          <label className={classes.label} htmlFor="">
+            {label}
+          </label>
+          <select className={classes.select} value={value} onChange={changed}>
+            {elementConfig.options.map(option => (
+              <option key={option.value} value={option.value}>
+                {option.name}
+              </option>
+            ))}
+          </select>
+        </div>
       );
       break;
     }
@@ -41,9 +43,9 @@ function Input(props) {
       inputElement = (
         <input
           className={inputClasses.join(' ')}
-          {...props.elementConfig}
-          value={props.value}
-          onChange={props.changed}
+          {...elementConfig}
+          value={value}
+          onChange={changed}
         />
       );
       break;
