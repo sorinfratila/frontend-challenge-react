@@ -35,7 +35,10 @@ function Filters() {
     setFilters(updatedFilters);
   };
 
-  // setting the filter options after interating through the DB data
+  /**
+   * setting the filter options after interating through the DB data
+   * @param {Set} options - the options extracted from the DB expenses
+   */
   const setFilterOptions = options => {
     return [...options].map(el => {
       return {
@@ -43,6 +46,21 @@ function Filters() {
         value: el,
       };
     });
+  };
+
+  /**
+   * Reusable helper function to set initial filter options based on extracted from BE data
+   * @param {String} control the state control param like date or currency
+   * @param {Set} dataSet the Set control data; eg: date or currency
+   */
+  const setStateFilter = (control, dataSet) => {
+    return {
+      ...filters[control],
+      elementConfig: {
+        ...filters[control].elementConfig,
+        options: setFilterOptions(dataSet),
+      },
+    };
   };
 
   // Sets containing all the years and currencies in the DB
@@ -65,20 +83,8 @@ function Filters() {
 
         setFilters({
           ...filters,
-          date: {
-            ...filters.date,
-            elementConfig: {
-              ...filters.date.elementConfig,
-              options: setFilterOptions(date),
-            },
-          },
-          currency: {
-            ...filters.currency,
-            elementConfig: {
-              ...filters.currency.elementConfig,
-              options: setFilterOptions(currency),
-            },
-          },
+          date: setStateFilter('date', date),
+          currency: setStateFilter('currency', currency),
         });
       } catch (e) {
         console.log(e);
