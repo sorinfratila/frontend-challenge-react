@@ -1,24 +1,46 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import classes from './Filters.module.scss';
 import axios from '../../axios/axios-expenses';
-import SearchBox from '../../components/SearchBox/SearchBox';
 import Input from '../../components/UI/Input/Input';
+import * as actions from '../../store/actions/index';
 
-function Filters() {
-  const [expenses, setExpenses] = useState([]);
+const debounce = (cb, delay) => {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => cb(...args), delay);
+  };
+};
+
+function Filters({ onSetExpenses, onGetExpenses }) {
+  // Sets containing all the years and currencies in the DB
+  const date = new Set();
+  const currency = new Set();
+
+  const [allExpenses, setAllExpenses] = useState([]);
   const [filters, setFilters] = useState({
+    search: {
+      elementType: 'input',
+      elementConfig: {
+        type: 'search',
+        placeholder: 'Min 2 characters',
+      },
+      value: '',
+    },
     date: {
       elementType: 'select',
       elementConfig: {
-        options: [],
+        options: [{ name: 'All entries', value: '' }],
       },
       value: '',
     },
     currency: {
       elementType: 'select',
       elementConfig: {
-        options: [],
+        options: [{ name: 'All entries', value: '' }],
       },
       value: '',
     },
@@ -33,6 +55,14 @@ function Filters() {
     updatedFormElement.value = event.target.value;
     updatedFilters[inputIdentifier] = updatedFormElement;
     setFilters(updatedFilters);
+
+    // if (inputIdentifier === 'search') {
+    debouncedCall({
+      search: updatedFilters.search.value,
+      date: updatedFilters.date.value,
+      currency: updatedFilters.currency.value,
+    });
+    // }
   };
 
   /**
@@ -58,14 +88,13 @@ function Filters() {
       ...filters[control],
       elementConfig: {
         ...filters[control].elementConfig,
-        options: setFilterOptions(dataSet),
+        options: [
+          ...filters[control].elementConfig.options,
+          ...setFilterOptions(dataSet),
+        ],
       },
     };
   };
-
-  // Sets containing all the years and currencies in the DB
-  const date = new Set();
-  const currency = new Set();
 
   // getting all expenses on mount to handle search and filters
   useEffect(() => {
@@ -74,10 +103,10 @@ function Filters() {
         const {
           data: { expenses },
         } = await axios.get(`/expenses?limit=10000&offset=0`);
-        setExpenses(expenses);
+        setAllExpenses(expenses);
 
         expenses.forEach(ex => {
-          date.add(new Date(ex.date).getFullYear());
+          date.add(new Date(ex.date).getFullYear().toString());
           currency.add(ex.amount.currency);
         });
 
@@ -93,6 +122,52 @@ function Filters() {
 
     getAllExpenses();
   }, []);
+
+  const search = ({ search, date, currency }) => {
+    const postFilterExpenses = allExpenses
+      .filter(exp => exp.amount.currency.includes(currency))
+      .filter(res =>
+        new Date(res.date).getFullYear().toString().includes(date)
+      );
+
+    if (search.length >= 2) {
+      const res = postFilterExpenses.filter(el => {
+        const {
+          user: { first, last, email },
+          merchant,
+          amount: { currency, value },
+        } = el;
+
+        return (
+          first.toLowerCase().search(search.toLowerCase()) > -1 ||
+          (email && email.toLowerCase().search(search.toLowerCase()) > -1) ||
+          last.toLowerCase().search(search.toLowerCase()) > -1 ||
+          merchant.toLowerCase().search(search.toLowerCase()) > -1 ||
+          currency.toLowerCase().search(search.toLowerCase()) > -1 ||
+          value.toLowerCase().search(search.toLowerCase()) > -1
+        );
+      });
+
+      onSetExpenses({ expenses: res, total: allExpenses.length, pages: [1] });
+    } else if (search.length === 1) {
+      // do nothing
+    } else {
+      if (date === '' && currency === '') {
+        onGetExpenses({ offset: 0, limit: 35 });
+      } else {
+        onSetExpenses({
+          expenses: postFilterExpenses,
+          total: allExpenses.length,
+          pages: [1],
+        });
+      }
+    }
+  };
+
+  const debouncedCall = useCallback(
+    debounce(value => search(value), 500),
+    [allExpenses]
+  );
 
   const filtersArr = [];
 
@@ -120,14 +195,19 @@ function Filters() {
     </div>
   );
 
-  return (
-    <div className={classes.container}>
-      <SearchBox allExpenses={expenses} />
-      {filtersEl}
-    </div>
-  );
+  return <div className={classes.container}>{filtersEl}</div>;
 }
 
-Filters.propTypes = {};
+const mapDispatchToProps = dispatch => {
+  return {
+    onSetExpenses: payload => dispatch(actions.setExpenses(payload)),
+    onGetExpenses: payload => dispatch(actions.getExpenses(payload)),
+  };
+};
 
-export default Filters;
+Filters.propTypes = {
+  onSetExpenses: PropTypes.func,
+  onGetExpenses: PropTypes.func,
+};
+
+export default connect(null, mapDispatchToProps)(Filters);
