@@ -10,7 +10,7 @@ const initialState = {
 
 const expenses = (state = initialState, action) => {
   switch (action.type) {
-    case actions.GET_EXPENSES_REQUEST: {
+    case actions.GET_EXPENSES: {
       return {
         ...state,
         isLoading: true,
@@ -25,7 +25,7 @@ const expenses = (state = initialState, action) => {
         pages: action.pages,
       };
     }
-    case actions.CHANGE_PAGE_REQUEST: {
+    case actions.CHANGE_PAGE: {
       return {
         ...state,
         isLoading: true,

@@ -11,10 +11,25 @@ function Expenses({ onGetExpenses, isLoading, expenses }) {
     onGetExpenses({ limit: 35, offset: 0 });
   }, [onGetExpenses]);
 
+  const onClickPhoto = id => {
+    console.log(id);
+  };
+
+  const onClickComment = id => {
+    console.log(id);
+  };
+
   let expensesEl = <Spinner />;
 
   !isLoading &&
-    (expensesEl = expenses.map(ex => <Expense expense={ex} key={ex.id} />));
+    (expensesEl = expenses.map(ex => (
+      <Expense
+        expense={ex}
+        key={ex.id}
+        onClickPhoto={() => onClickPhoto(ex.id)}
+        onClickComment={() => onClickComment(ex.id)}
+      />
+    )));
 
   !expenses.length && (expensesEl = <p>No matches</p>);
 

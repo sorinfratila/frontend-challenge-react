@@ -2,7 +2,7 @@ import actions from './actionTypes';
 
 export const getExpenses = ({ offset = 0, limit = 25 }) => {
   return {
-    type: actions.GET_EXPENSES_REQUEST,
+    type: actions.GET_EXPENSES,
     payload: {
       offset,
       limit,
@@ -30,7 +30,7 @@ export const setExpenses = ({ expenses, total, pages }) => {
 
 export const changePage = page => {
   return {
-    type: actions.CHANGE_PAGE_REQUEST,
+    type: actions.CHANGE_PAGE,
     page,
   };
 };

@@ -4,7 +4,7 @@ import { getExpensesSaga, changePageSaga } from './expenses';
 
 export function* watchExpenses() {
   yield all([
-    takeEvery(actions.GET_EXPENSES_REQUEST, getExpensesSaga),
-    takeEvery(actions.CHANGE_PAGE_REQUEST, changePageSaga),
+    takeEvery(actions.GET_EXPENSES, getExpensesSaga),
+    takeEvery(actions.CHANGE_PAGE, changePageSaga),
   ]);
 }

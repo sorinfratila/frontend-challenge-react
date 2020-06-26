@@ -9,6 +9,7 @@
   margin-bottom: 0.3rem;
   color: $black-02;
   padding: 0.3rem;
+  cursor: pointer;
 
   .left {
     @extend .truncate;
@@ -27,7 +28,6 @@
     .caret {
       display: flex;
       align-items: center;
-      cursor: pointer;
     }
 
     span {

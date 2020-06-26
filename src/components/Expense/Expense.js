@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { ExpandMore, AddAPhoto, AddComment } from '@material-ui/icons';
 import classes from './Expense.module.scss';
 import PropTypes from 'prop-types';
-
-function Expense({ expense }) {
+import Button from '../UI/Button/Button';
+function Expense({ expense, onClickPhoto, onClickComment }) {
   const [headerOpen, setHeaderOpen] = useState(false);
 
   return (
@@ -26,12 +26,8 @@ function Expense({ expense }) {
         </div>
       </div>
       <div className={classes.right}>
-        <a className="pointer">
-          <AddAPhoto style={{ fontSize: '2.5rem' }} />
-        </a>
-        <a className="pointer">
-          <AddComment style={{ fontSize: '2.5rem' }} />
-        </a>
+        <Button icon={AddAPhoto} clicked={onClickPhoto} />
+        <Button icon={AddComment} clicked={onClickComment} />
       </div>
     </header>
   );
@@ -39,6 +35,8 @@ function Expense({ expense }) {
 
 Expense.propTypes = {
   expense: PropTypes.object,
+  onClickPhoto: PropTypes.func,
+  onClickComment: PropTypes.func,
 };
 
 export default Expense;
