@@ -11,11 +11,13 @@ function Expenses({ onGetExpenses, isLoading, expenses }) {
     onGetExpenses({ limit: 35, offset: 0 });
   }, [onGetExpenses]);
 
-  const onClickPhoto = id => {
+  const onClickPhoto = (e, id) => {
+    e.stopPropagation();
     console.log(id);
   };
 
-  const onClickComment = id => {
+  const onClickComment = (e, id) => {
+    e.stopPropagation();
     console.log(id);
   };
 
@@ -26,8 +28,8 @@ function Expenses({ onGetExpenses, isLoading, expenses }) {
       <Expense
         expense={ex}
         key={ex.id}
-        onClickPhoto={() => onClickPhoto(ex.id)}
-        onClickComment={() => onClickComment(ex.id)}
+        onClickPhoto={e => onClickPhoto(e, ex.id)}
+        onClickComment={e => onClickComment(e, ex.id)}
       />
     )));
 

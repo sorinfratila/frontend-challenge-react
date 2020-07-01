@@ -124,6 +124,7 @@ function Filters({ onSetExpenses, onGetExpenses }) {
   }, []);
 
   const search = ({ search, date, currency }) => {
+    // TODO: can be optimized
     const postFilterExpenses = allExpenses
       .filter(exp => exp.amount.currency.includes(currency))
       .filter(res =>

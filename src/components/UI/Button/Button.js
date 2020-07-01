@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classes from './Button.module.scss';
 
-function Button({ icon = null, text = null, fontSize = '2.5rem', clicked }) {
+function Button({ icon = null, children, fontSize = '2.5rem', clicked }) {
   const Icon = icon;
   let element = null;
 
@@ -10,7 +10,7 @@ function Button({ icon = null, text = null, fontSize = '2.5rem', clicked }) {
 
   return (
     <button className={classes.btn} onClick={clicked}>
-      {element} {text}
+      {element} {children}
     </button>
   );
 }
@@ -20,6 +20,7 @@ Button.propTypes = {
   text: PropTypes.string,
   fontSize: PropTypes.string,
   clicked: PropTypes.func,
+  children: PropTypes.any,
 };
 
 export default Button;
