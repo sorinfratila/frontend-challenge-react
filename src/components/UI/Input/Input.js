@@ -39,6 +39,18 @@ function Input({ elementConfig, elementType, value, changed, label }) {
       );
       break;
     }
+    case 'textarea': {
+      console.log('elementConfig', elementConfig);
+      inputElement = (
+        <textarea
+          className={inputClasses.join(' ')}
+          {...elementConfig}
+          rows="50"
+          value={value}
+          onChange={changed}></textarea>
+      );
+      break;
+    }
     default: {
       inputElement = (
         <input

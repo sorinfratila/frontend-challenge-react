@@ -3,3 +3,12 @@
   overflow-y: auto;
   // margin: 20px 0;
 }
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+
+  Button {
+    margin-right: 5px;
+  }
+}

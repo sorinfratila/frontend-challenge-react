@@ -38,8 +38,8 @@ function AccordionExpenseHeader({
         </div>
       </div>
       <div className={classes.right}>
-        <Button icon={AddAPhoto} clicked={onClickPhoto} />
-        <Button icon={AddComment} clicked={onClickComment} />
+        <Button icon={AddAPhoto} onClick={onClickPhoto} />
+        <Button icon={AddComment} onClick={onClickComment} />
       </div>
     </header>
   );
