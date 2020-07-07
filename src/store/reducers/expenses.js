@@ -42,8 +42,8 @@ const expenses = (state = initialState, action) => {
       return {
         ...state,
         expenses: action.expenses,
-        totalEntries: action.totalEntries,
-        pages: action.pages,
+        totalEntries: action.totalEntries || state.totalEntries,
+        pages: action.pages || state.pages,
       };
     }
     default: {

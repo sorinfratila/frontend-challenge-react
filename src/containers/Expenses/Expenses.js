@@ -1,49 +1,77 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../store/actions/index';
 import PropTypes from 'prop-types';
+
+import * as actions from '../../store/actions/index';
+import axios from '../../axios/axios-expenses';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import Expense from '../../components/Expense/Expense';
 import classes from './Expenses.module.scss';
 import Modal from '../../components/UI/Modal/Modal';
-import Button from '../../components/UI/Button/Button';
 import AddComment from '../../components/Expense/AddComment/AddComment';
 import AddPhoto from '../../components/Expense/AddPhoto/AddPhoto';
+import Button from '../../components/UI/Button/Button';
 
-function Expenses({ onGetExpenses, isLoading, expenses }) {
+function Expenses({ onGetExpenses, onSetExpenses, isLoading, expenses }) {
   const [modalState, setModalState] = useState(false);
   const [modalContent, setModalContent] = useState({
     title: '',
     expenseId: '',
+    index: -1,
+  });
+  const [comment, setComment] = useState({
+    elementType: 'textarea',
+    elementConfig: {
+      type: 'text',
+      placeholder: 'Write your comment here',
+      rows: '10',
+    },
+    value: '',
   });
 
   useEffect(() => {
     onGetExpenses({ limit: 35, offset: 0 });
   }, [onGetExpenses]);
 
-  const onClickPhoto = (e, id) => {
+  const onClickPhoto = (e, id, index) => {
     e.stopPropagation();
-    setModalContent({ title: 'Add Receipt', expenseId: id });
+    setModalContent({ title: 'Add Receipt', expenseId: id, index });
     setModalState(true);
   };
 
-  const onClickComment = (e, id) => {
+  const onClickComment = (e, id, index) => {
     e.stopPropagation();
-    setModalContent({ title: 'Add Comment', expenseId: id });
+    setModalContent({ title: 'Add Comment', expenseId: id, index });
     setModalState(true);
   };
 
-  const addCommentHandler = expenseId => {};
+  const addCommentHandler = async () => {
+    const payload = {
+      comment: comment.value,
+    };
+    const res = await axios.post(
+      `/expenses/${modalContent.expenseId}`,
+      payload
+    );
+
+    const expensesCopy = expenses.slice();
+    expensesCopy.splice(modalContent.index, 1, res.data);
+    onSetExpenses({ expenses: expensesCopy });
+
+    setComment({ ...comment, value: '' });
+
+    setModalState(false);
+  };
 
   let expensesEl = <Spinner />;
 
   !isLoading &&
-    (expensesEl = expenses.map(ex => (
+    (expensesEl = expenses.map((ex, index) => (
       <Expense
         expense={ex}
         key={ex.id}
-        onClickPhoto={e => onClickPhoto(e, ex.id)}
-        onClickComment={e => onClickComment(e, ex.id)}
+        onClickPhoto={e => onClickPhoto(e, ex.id, index)}
+        onClickComment={e => onClickComment(e, ex.id, index)}
       />
     )));
 
@@ -58,12 +86,16 @@ function Expenses({ onGetExpenses, isLoading, expenses }) {
         renderFooter={() => (
           <footer className={classes.modalFooter}>
             <Button onClick={() => setModalState(false)}>Cancel</Button>
-            <Button type={'primary'} onClick={() => setModalState(false)}>
+            <Button type="primary" onClick={addCommentHandler}>
               Apply
             </Button>
           </footer>
         )}>
-        {modalContent.title === 'Add Comment' ? <AddComment /> : <AddPhoto />}
+        {modalContent.title === 'Add Comment' ? (
+          <AddComment setComment={setComment} comment={comment} />
+        ) : (
+          <AddPhoto />
+        )}
       </Modal>
       {expensesEl}
     </div>
@@ -72,6 +104,7 @@ function Expenses({ onGetExpenses, isLoading, expenses }) {
 
 Expenses.propTypes = {
   onGetExpenses: PropTypes.func,
+  onSetExpenses: PropTypes.func,
   isLoading: PropTypes.bool,
   expenses: PropTypes.array,
 };
@@ -86,6 +119,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onGetExpenses: payload => dispatch(actions.getExpenses(payload)),
+    onSetExpenses: payload => dispatch(actions.setExpenses(payload)),
   };
 };
 

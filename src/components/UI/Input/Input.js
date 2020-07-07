@@ -2,9 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classes from './Input.module.scss';
 
-function Input({ elementConfig, elementType, value, changed, label }) {
+function Input({
+  elementConfig,
+  elementType,
+  value,
+  changed,
+  label,
+  ...other
+}) {
   let inputElement = null;
-  const inputClasses = [classes.Input];
+  const inputClasses = [classes.input];
 
   // if (props.invalid && props.shouldValidate && props.touched) {
   //   inputClasses.push(classes.Invalid);
@@ -40,14 +47,14 @@ function Input({ elementConfig, elementType, value, changed, label }) {
       break;
     }
     case 'textarea': {
-      console.log('elementConfig', elementConfig);
       inputElement = (
         <textarea
+          {...other}
           className={inputClasses.join(' ')}
           {...elementConfig}
-          rows="50"
           value={value}
-          onChange={changed}></textarea>
+          onChange={changed}
+        />
       );
       break;
     }
@@ -64,7 +71,7 @@ function Input({ elementConfig, elementType, value, changed, label }) {
     }
   }
 
-  return <div>{inputElement}</div>;
+  return <>{inputElement}</>;
 }
 
 Input.propTypes = {

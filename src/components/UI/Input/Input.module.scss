@@ -1,22 +1,27 @@
 @import '../../../styles/colors.scss';
 
-.Input {
+input {
   width: 100%;
   box-sizing: border-box;
   padding: 0.5rem 1rem;
   border: 1px solid black;
   border-radius: 3px;
   font-size: 1.4rem;
+  margin-right: 0.5rem;
   min-width: 20rem;
   max-width: 20rem;
   height: 2.5rem;
-  margin-right: 0.5rem;
 }
 
-.Label {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 8px;
+textarea {
+  width: 100%;
+  font-family: inherit;
+  box-sizing: border-box;
+  padding: 0.5rem 1rem;
+  border: 1px solid black;
+  border-radius: 3px;
+  font-size: 1.4rem;
+  margin-right: 0.5rem;
 }
 
 .select_container {
@@ -29,6 +34,7 @@
   }
 
   .label {
+    font-weight: bold;
     font-size: 1.2rem;
     text-transform: capitalize;
     margin-right: 1rem;
