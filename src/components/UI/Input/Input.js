@@ -29,6 +29,17 @@ function Input({
       );
       break;
     }
+    case 'file': {
+      inputElement = (
+        <input
+          className={inputClasses.join(' ')}
+          {...elementConfig}
+          value={value}
+          onChange={changed}
+        />
+      );
+      break;
+    }
     case 'select': {
       inputElement = (
         <div className={classes.select_container}>

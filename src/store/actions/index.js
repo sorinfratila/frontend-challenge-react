@@ -1,6 +1,7 @@
 export {
   getExpenses,
   getExpensesSuccess,
+  getExpensesFail,
   changePage,
   changePageSuccess,
   setExpenses,

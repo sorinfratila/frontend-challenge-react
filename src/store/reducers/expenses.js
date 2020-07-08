@@ -6,6 +6,7 @@ const initialState = {
   isLoading: false,
   pages: [],
   currentPage: 1,
+  error: null,
 };
 
 const expenses = (state = initialState, action) => {
@@ -22,7 +23,15 @@ const expenses = (state = initialState, action) => {
         expenses: action.expenses,
         totalEntries: action.totalEntries,
         isLoading: false,
+        error: null,
         pages: action.pages,
+      };
+    }
+    case actions.GET_EXPENSES_FAIL: {
+      return {
+        ...state,
+        error: action.error,
+        isLoading: false,
       };
     }
     case actions.CHANGE_PAGE: {

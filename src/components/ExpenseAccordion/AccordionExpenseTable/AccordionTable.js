@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classes from './AccordionTable.module.scss';
+import Thumbnail from '../../UI/Thumbnail/Thumbnail';
 
 function AccordionTable({ rows = [] }) {
+  const baseURL = 'http://localhost:3001';
+
   const rowsEl = rows.map(row => {
     return (
       <tr key={row.label}>
@@ -10,7 +13,18 @@ function AccordionTable({ rows = [] }) {
           <label>{row.label}</label>
         </td>
         <td>
-          <p>{row.value}</p>
+          {row.value instanceof Array ? (
+            <div className={classes.thumbnailContainer}>
+              {row.value.map(el => (
+                <Thumbnail
+                  key={el.url}
+                  src={baseURL + el.url}
+                  small></Thumbnail>
+              ))}
+            </div>
+          ) : (
+            <p>{row.value}</p>
+          )}
         </td>
       </tr>
     );

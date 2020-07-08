@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classes from './Modal.module.scss';
 import Backdrop from '../Backdrop/Backdrop';
 
-const Modal = ({ modalClosed, show, children, title = '', renderFooter }) => {
+const Modal = ({ modalClosed, show, children, title = '' }) => {
   return (
     <>
       <Backdrop onClickBackdrop={modalClosed} show={show}>
@@ -17,7 +17,6 @@ const Modal = ({ modalClosed, show, children, title = '', renderFooter }) => {
         }}>
         <h2 style={{ textAlign: 'center' }}>{title}</h2>
         {children}
-        {renderFooter()}
       </div>
     </>
   );
@@ -28,7 +27,6 @@ Modal.propTypes = {
   show: PropTypes.any,
   modalClosed: PropTypes.func,
   title: PropTypes.string,
-  renderFooter: PropTypes.func,
 };
 
 const shouldComponentUpdate = (prevProps, nextProps) => {

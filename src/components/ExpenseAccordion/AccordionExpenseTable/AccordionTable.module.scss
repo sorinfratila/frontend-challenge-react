@@ -29,11 +29,11 @@
 
       td {
         overflow: hidden;
-        height: 3rem;
+        height: 2.8rem;
         color: $black-02;
         font-size: 1.2rem;
         font-weight: 400;
-        padding: 0 0.8rem;
+        padding: 0.2rem 0.8rem;
         text-align: left;
         box-sizing: content-box;
 
@@ -41,14 +41,15 @@
           text-transform: capitalize;
         }
 
-        &.receipts {
-          .container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: flex-start;
+        .thumbnailContainer {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: flex-start;
+
+          & > * {
+            margin-right: 0.3rem;
           }
         }
       }

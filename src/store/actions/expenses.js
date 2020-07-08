@@ -19,6 +19,13 @@ export const getExpensesSuccess = (expenses, total, pages) => {
   };
 };
 
+export const getExpensesFail = error => {
+  return {
+    type: actions.GET_EXPENSES_FAIL,
+    error,
+  };
+};
+
 export const setExpenses = ({ expenses, total, pages }) => {
   return {
     type: actions.SET_EXPENSES,

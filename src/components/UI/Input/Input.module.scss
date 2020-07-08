@@ -1,6 +1,7 @@
 @import '../../../styles/colors.scss';
 
-input {
+input[type='search'],
+input[type='text'] {
   width: 100%;
   box-sizing: border-box;
   padding: 0.5rem 1rem;
@@ -72,7 +73,9 @@ textarea {
   box-sizing: border-box;
 }
 
-.InputElement:focus {
+input[type='text']:focus,
+input[type='search']:focus,
+textarea:focus {
   outline: none;
   background-color: #ccc;
 }

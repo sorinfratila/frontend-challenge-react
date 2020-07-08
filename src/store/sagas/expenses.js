@@ -14,16 +14,20 @@ export function* getExpensesSaga({ payload }) {
       ? `?limit=${payload.limit}&offset=${payload.offset}`
       : '';
 
-    const {
-      data: { expenses, total },
-    } = yield axios.get(`/expenses${link}`);
+    const response = yield axios.get(`/expenses${link}`);
 
-    const pages = getPages(total, payload.limit);
+    const pages = getPages(response.data.total, payload.limit);
 
-    yield put(actions.getExpensesSuccess(expenses, total, pages));
+    yield put(
+      actions.getExpensesSuccess(
+        response.data.expenses,
+        response.data.total,
+        pages
+      )
+    );
   } catch (e) {
-    console.log(e);
-    // yield put(actions.getEx(e.response.data.error));
+    console.log('WE ARE IN ERROR NOW', e);
+    yield put(actions.getExpensesFail(e.response.data.error));
   }
 }
 

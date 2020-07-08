@@ -3,3 +3,12 @@
   width: 100%;
   // box-sizing: border-box;
 }
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+
+  Button {
+    margin-right: 5px;
+  }
+}

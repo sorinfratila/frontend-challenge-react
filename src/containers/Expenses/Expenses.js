@@ -11,6 +11,7 @@ import Modal from '../../components/UI/Modal/Modal';
 import AddComment from '../../components/Expense/AddComment/AddComment';
 import AddPhoto from '../../components/Expense/AddPhoto/AddPhoto';
 import Button from '../../components/UI/Button/Button';
+// import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 function Expenses({ onGetExpenses, onSetExpenses, isLoading, expenses }) {
   const [modalState, setModalState] = useState(false);
@@ -25,6 +26,13 @@ function Expenses({ onGetExpenses, onSetExpenses, isLoading, expenses }) {
       type: 'text',
       placeholder: 'Write your comment here',
       rows: '10',
+    },
+    value: '',
+  });
+  const [file, setFile] = useState({
+    elementType: 'file',
+    elementConfig: {
+      type: 'file',
     },
     value: '',
   });
@@ -59,7 +67,23 @@ function Expenses({ onGetExpenses, onSetExpenses, isLoading, expenses }) {
     onSetExpenses({ expenses: expensesCopy });
 
     setComment({ ...comment, value: '' });
+    setModalState(false);
+  };
 
+  const addPhotoHandler = async () => {
+    const formData = new FormData();
+    formData.append('receipt', file.value);
+
+    const res = await axios.post(
+      `/expenses/${modalContent.expenseId}/receipts`,
+      formData
+    );
+
+    const expensesCopy = expenses.slice();
+    expensesCopy.splice(modalContent.index, 1, res.data);
+    onSetExpenses({ expenses: expensesCopy });
+
+    setFile({ ...file, value: '' });
     setModalState(false);
   };
 
@@ -82,19 +106,21 @@ function Expenses({ onGetExpenses, onSetExpenses, isLoading, expenses }) {
       <Modal
         title={modalContent.title}
         show={modalState}
-        modalClosed={() => setModalState(false)}
-        renderFooter={() => (
-          <footer className={classes.modalFooter}>
-            <Button onClick={() => setModalState(false)}>Cancel</Button>
-            <Button type="primary" onClick={addCommentHandler}>
-              Apply
-            </Button>
-          </footer>
-        )}>
+        modalClosed={() => setModalState(false)}>
         {modalContent.title === 'Add Comment' ? (
-          <AddComment setComment={setComment} comment={comment} />
+          <AddComment
+            comment={comment}
+            setComment={setComment}
+            setModalState={setModalState}
+            addCommentHandler={addCommentHandler}
+          />
         ) : (
-          <AddPhoto />
+          <AddPhoto
+            file={file}
+            setFile={setFile}
+            setModalState={setModalState}
+            addPhotoHandler={addPhotoHandler}
+          />
         )}
       </Modal>
       {expensesEl}
