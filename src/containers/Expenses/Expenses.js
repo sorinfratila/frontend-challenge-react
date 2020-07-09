@@ -10,7 +10,6 @@ import classes from './Expenses.module.scss';
 import Modal from '../../components/UI/Modal/Modal';
 import AddComment from '../../components/Expense/AddComment/AddComment';
 import AddPhoto from '../../components/Expense/AddPhoto/AddPhoto';
-import Button from '../../components/UI/Button/Button';
 // import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 function Expenses({ onGetExpenses, onSetExpenses, isLoading, expenses }) {

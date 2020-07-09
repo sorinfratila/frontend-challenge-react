@@ -22,6 +22,8 @@ function AccordionTable({ rows = [] }) {
                   small></Thumbnail>
               ))}
             </div>
+          ) : row.label === 'date' ? (
+            formatDate(row.value)
           ) : (
             <p>{row.value}</p>
           )}
@@ -46,3 +48,20 @@ AccordionTable.propTypes = {
 };
 
 export default AccordionTable;
+
+const formatDate = date => {
+  const day = `${
+    new Date(date).getDate().toString().length === 1
+      ? '0' + new Date(date).getDate()
+      : new Date(date).getDate()
+  }`;
+
+  const month = `${
+    (new Date(date).getMonth() + 1).toString().length === 1
+      ? '0' + (new Date(date).getMonth() + 1)
+      : new Date(date).getMonth() + 1
+  }`;
+
+  const year = `${new Date(date).getFullYear()}`;
+  return `${day}-${month}-${year}`;
+};
