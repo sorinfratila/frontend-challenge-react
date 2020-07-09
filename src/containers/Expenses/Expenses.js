@@ -98,7 +98,10 @@ function Expenses({ onGetExpenses, onSetExpenses, isLoading, expenses }) {
       />
     )));
 
-  !expenses.length && (expensesEl = <p>No matches</p>);
+  !expenses.length &&
+    (expensesEl = (
+      <p style={{ fontSize: '16px' }}>Could not find any results</p>
+    ));
 
   return (
     <div className={classes.container}>

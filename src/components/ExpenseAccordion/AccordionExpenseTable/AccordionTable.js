@@ -10,7 +10,7 @@ function AccordionTable({ rows = [] }) {
     return (
       <tr key={row.label}>
         <td>
-          <label>{row.label}</label>
+          <label htmlFor="random">{row.label}</label>
         </td>
         <td>
           {row.value instanceof Array ? (

@@ -43,7 +43,7 @@ function Input({
     case 'select': {
       inputElement = (
         <div className={classes.select_container}>
-          <label className={classes.label} htmlFor="">
+          <label className={classes.label} htmlFor="random">
             {label}
           </label>
           <select className={classes.select} value={value} onChange={changed}>
