@@ -5,7 +5,19 @@ import { connect } from 'react-redux';
 import classes from './Pagination.module.scss';
 import * as actions from '../../store/actions/index';
 
+// const getPagesArr = (totalEntries, limit = 35) => {
+//   if (totalEntries !== 0 && limit !== 0) {
+//     const length = Math.ceil(totalEntries / limit);
+//     const pages = Array.from(Array(length), (_, index) => index + 1);
+//     return pages;
+//   }
+
+//   return [];
+// };
+
 function Pagination({ currentPage, pages, onPageChange }) {
+  // const pagesArr = getPagesArr(totalEntries, expenses.length);
+
   const pagination = pages.map(page => {
     return (
       <a

@@ -19,11 +19,11 @@ export function* getExpensesSaga({ payload }) {
     const pages = getPages(response.data.total, payload.limit);
 
     yield put(
-      actions.getExpensesSuccess(
-        response.data.expenses,
-        response.data.total,
-        pages
-      )
+      actions.getExpensesSuccess({
+        expenses: response.data.expenses,
+        total: response.data.total,
+        pages,
+      })
     );
   } catch (e) {
     console.log('WE ARE IN ERROR NOW', e);

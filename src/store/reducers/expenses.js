@@ -34,6 +34,15 @@ const expenses = (state = initialState, action) => {
         isLoading: false,
       };
     }
+    case actions.SET_EXPENSES: {
+      return {
+        ...state,
+        expenses: action.expenses,
+        totalEntries: action.totalEntries || state.totalEntries,
+        pages: action.pages || state.pages,
+        currentPage: action.currentPage || state.currentPage,
+      };
+    }
     case actions.CHANGE_PAGE: {
       return {
         ...state,
@@ -45,14 +54,6 @@ const expenses = (state = initialState, action) => {
         ...state,
         isLoading: false,
         currentPage: action.currentPage,
-      };
-    }
-    case actions.SET_EXPENSES: {
-      return {
-        ...state,
-        expenses: action.expenses,
-        totalEntries: action.totalEntries || state.totalEntries,
-        pages: action.pages || state.pages,
       };
     }
     default: {

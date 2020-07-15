@@ -149,7 +149,12 @@ function Filters({ onSetExpenses, onGetExpenses }) {
         );
       });
 
-      onSetExpenses({ expenses: res, total: allExpenses.length, pages: [1] });
+      onSetExpenses({
+        expenses: res,
+        total: allExpenses.length,
+        pages: [1],
+        currentPage: 1,
+      });
     } else if (search.length === 1) {
       // do nothing
     } else {
@@ -160,6 +165,7 @@ function Filters({ onSetExpenses, onGetExpenses }) {
           expenses: postFilterExpenses,
           total: allExpenses.length,
           pages: [1],
+          currentPage: 1,
         });
       }
     }

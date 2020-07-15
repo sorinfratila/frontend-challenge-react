@@ -10,7 +10,7 @@ export const getExpenses = ({ offset = 0, limit = 25 }) => {
   };
 };
 
-export const getExpensesSuccess = (expenses, total, pages) => {
+export const getExpensesSuccess = ({ expenses, total, pages }) => {
   return {
     type: actions.GET_EXPENSES_SUCCESS,
     expenses,
@@ -26,12 +26,13 @@ export const getExpensesFail = error => {
   };
 };
 
-export const setExpenses = ({ expenses, total, pages }) => {
+export const setExpenses = ({ expenses, total, pages, currentPage }) => {
   return {
     type: actions.SET_EXPENSES,
     expenses,
     totalEntries: total,
     pages,
+    currentPage,
   };
 };
 
