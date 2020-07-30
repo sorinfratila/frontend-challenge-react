@@ -21,6 +21,7 @@ function Pagination({ currentPage, pages, onPageChange }) {
   const pagination = pages.map(page => {
     return (
       <a
+        role="button"
         onClick={() => onPageChange(page)}
         className={
           page === currentPage

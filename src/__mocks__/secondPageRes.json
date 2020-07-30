@@ -1,0 +1,526 @@
+{
+  "expenses": [
+    {
+      "id": "5b99606422ad258d23e80b33",
+      "amount": { "value": "3092.27", "currency": "GBP" },
+      "date": "2017-10-15T23:42:24.772Z",
+      "merchant": "COMBOGEN",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Ross",
+        "last": "Drake",
+        "email": "ross.drake@pleo.io"
+      },
+      "index": 35
+    },
+    {
+      "id": "5b995dff9996b92bca3623d0",
+      "amount": { "value": "697.77", "currency": "EUR" },
+      "date": "2017-09-19T05:43:58.317Z",
+      "merchant": "XIXAN",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Downs",
+        "last": "Savage",
+        "email": "downs.savage@pleo.io"
+      },
+      "index": 36
+    },
+    {
+      "id": "5b995dff0ec12c99d0601413",
+      "amount": { "value": "2212.8", "currency": "GBP" },
+      "date": "2017-08-26T15:33:39.268Z",
+      "merchant": "MANGLO",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Tracy",
+        "last": "Waller",
+        "email": "tracy.waller@pleo.io"
+      },
+      "index": 37
+    },
+    {
+      "id": "5b99606443ad0c4311f1d02d",
+      "amount": { "value": "3022.16", "currency": "EUR" },
+      "date": "2017-08-12T18:38:14.603Z",
+      "merchant": "AUSTEX",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": { "first": "Fay", "last": "Lucas", "email": "fay.lucas@pleo.io" },
+      "index": 38
+    },
+    {
+      "id": "5b99606455fd0dc1e8ddffff",
+      "amount": { "value": "2013.21", "currency": "DKK" },
+      "date": "2017-08-09T23:47:08.120Z",
+      "merchant": "HANDSHAKE",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Camacho",
+        "last": "Delaney",
+        "email": "camacho.delaney@pleo.io"
+      },
+      "index": 39
+    },
+    {
+      "id": "5b996064ec1922a0ef41c447",
+      "amount": { "value": "1674.92", "currency": "DKK" },
+      "date": "2017-07-26T05:01:14.427Z",
+      "merchant": "KANGLE",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Avila",
+        "last": "Skinner",
+        "email": "avila.skinner@pleo.io"
+      },
+      "index": 40
+    },
+    {
+      "id": "5b995dff8acdb7764003a9a4",
+      "amount": { "value": "2999.51", "currency": "GBP" },
+      "date": "2017-07-13T10:48:59.380Z",
+      "merchant": "BUZZWORKS",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Cathy",
+        "last": "Mccormick",
+        "email": "cathy.mccormick@pleo.io"
+      },
+      "index": 41
+    },
+    {
+      "id": "5b995dff2e3cb74644948a66",
+      "amount": { "value": "2149.29", "currency": "GBP" },
+      "date": "2017-06-21T08:45:09.326Z",
+      "merchant": "QUONK",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Atkins",
+        "last": "Blackburn",
+        "email": "atkins.blackburn@pleo.io"
+      },
+      "index": 42
+    },
+    {
+      "id": "5b995dffcc602abb5c700771",
+      "amount": { "value": "603.42", "currency": "EUR" },
+      "date": "2017-06-19T23:01:32.198Z",
+      "merchant": "SENMAO",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Berta",
+        "last": "Wise",
+        "email": "berta.wise@pleo.io"
+      },
+      "index": 43
+    },
+    {
+      "id": "5b995dff9576dd083d05b4bd",
+      "amount": { "value": "1660.67", "currency": "GBP" },
+      "date": "2017-06-18T10:45:38.038Z",
+      "merchant": "APPLIDECK",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Carissa",
+        "last": "Hickman",
+        "email": "carissa.hickman@pleo.io"
+      },
+      "index": 44
+    },
+    {
+      "id": "5b995dff32fce1671a025316",
+      "amount": { "value": "704.92", "currency": "EUR" },
+      "date": "2017-06-07T23:16:55.055Z",
+      "merchant": "RODEMCO",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Hawkins",
+        "last": "Hyde",
+        "email": "hawkins.hyde@pleo.io"
+      },
+      "index": 45
+    },
+    {
+      "id": "5b9960645ee96a3f04e30c31",
+      "amount": { "value": "128.5", "currency": "GBP" },
+      "date": "2017-06-01T01:22:24.225Z",
+      "merchant": "TERRAGEN",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Rebekah",
+        "last": "Cross",
+        "email": "rebekah.cross@pleo.io"
+      },
+      "index": 46
+    },
+    {
+      "id": "5b995dffdeec40464bd614bf",
+      "amount": { "value": "731.92", "currency": "EUR" },
+      "date": "2017-05-30T14:12:31.054Z",
+      "merchant": "WRAPTURE",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Barbara",
+        "last": "Downs",
+        "email": "barbara.downs@pleo.io"
+      },
+      "index": 47
+    },
+    {
+      "id": "5b995dff399cfe97db167ae9",
+      "amount": { "value": "227.73", "currency": "DKK" },
+      "date": "2017-05-28T06:40:35.365Z",
+      "merchant": "STELAECOR",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Maria",
+        "last": "Mcknight",
+        "email": "maria.mcknight@pleo.io"
+      },
+      "index": 48
+    },
+    {
+      "id": "5b996064a33a35175c25fea5",
+      "amount": { "value": "1927.1", "currency": "DKK" },
+      "date": "2017-05-26T05:28:05.020Z",
+      "merchant": "UPDAT",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Garza",
+        "last": "Blake",
+        "email": "garza.blake@pleo.io"
+      },
+      "index": 49
+    },
+    {
+      "id": "5b9960649f37a3041c65877c",
+      "amount": { "value": "412.03", "currency": "GBP" },
+      "date": "2017-05-25T07:59:38.697Z",
+      "merchant": "SKYPLEX",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Rose",
+        "last": "Fitzgerald",
+        "email": "rose.fitzgerald@pleo.io"
+      },
+      "index": 50
+    },
+    {
+      "id": "5b995dff3ab30be854b10fd6",
+      "amount": { "value": "1354.45", "currency": "EUR" },
+      "date": "2017-05-20T04:43:41.788Z",
+      "merchant": "JUMPSTACK",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Bender",
+        "last": "Stout",
+        "email": "bender.stout@pleo.io"
+      },
+      "index": 51
+    },
+    {
+      "id": "5b996064c1202952ee98dc28",
+      "amount": { "value": "3169.39", "currency": "EUR" },
+      "date": "2017-04-29T13:47:52.978Z",
+      "merchant": "ZEDALIS",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Etta",
+        "last": "Black",
+        "email": "etta.black@pleo.io"
+      },
+      "index": 52
+    },
+    {
+      "id": "5b995dffac46fc715d1b475c",
+      "amount": { "value": "855.69", "currency": "GBP" },
+      "date": "2017-04-21T05:42:50.785Z",
+      "merchant": "ILLUMITY",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Lourdes",
+        "last": "Gallagher",
+        "email": "lourdes.gallagher@pleo.io"
+      },
+      "index": 53
+    },
+    {
+      "id": "5b995dff75ffa69322e76673",
+      "amount": { "value": "18.64", "currency": "EUR" },
+      "date": "2017-04-16T16:36:03.758Z",
+      "merchant": "QUILITY",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Sofia",
+        "last": "Brady",
+        "email": "sofia.brady@pleo.io"
+      },
+      "index": 54
+    },
+    {
+      "id": "5b995dffc2aa1a91289082a9",
+      "amount": { "value": "1213.29", "currency": "DKK" },
+      "date": "2017-04-02T23:07:01.968Z",
+      "merchant": "TERRAGEN",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Ronda",
+        "last": "Nunez",
+        "email": "ronda.nunez@pleo.io"
+      },
+      "index": 55
+    },
+    {
+      "id": "5b995dffec9cbbc82a7320aa",
+      "amount": { "value": "3213.01", "currency": "DKK" },
+      "date": "2017-02-26T16:56:25.194Z",
+      "merchant": "OPTICALL",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Harrison",
+        "last": "Crawford",
+        "email": "harrison.crawford@pleo.io"
+      },
+      "index": 56
+    },
+    {
+      "id": "5b995dffbb46057fa1ba1d9d",
+      "amount": { "value": "2129.48", "currency": "EUR" },
+      "date": "2017-02-23T13:02:20.101Z",
+      "merchant": "YURTURE",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Debora",
+        "last": "Leach",
+        "email": "debora.leach@pleo.io"
+      },
+      "index": 57
+    },
+    {
+      "id": "5b995dff92941bc708a31fae",
+      "amount": { "value": "81.7", "currency": "DKK" },
+      "date": "2017-02-10T04:55:47.858Z",
+      "merchant": "FURNAFIX",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Kelsey",
+        "last": "Christensen",
+        "email": "kelsey.christensen@pleo.io"
+      },
+      "index": 58
+    },
+    {
+      "id": "5b995dffca53e0e292a6c7ef",
+      "amount": { "value": "1494.41", "currency": "GBP" },
+      "date": "2017-02-01T04:12:48.146Z",
+      "merchant": "EMPIRICA",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Marshall",
+        "last": "Sullivan",
+        "email": "marshall.sullivan@pleo.io"
+      },
+      "index": 59
+    },
+    {
+      "id": "5b99606494b58c2188350cc5",
+      "amount": { "value": "1419.27", "currency": "EUR" },
+      "date": "2017-01-25T20:31:03.315Z",
+      "merchant": "NITRACYR",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Lynette",
+        "last": "Bean",
+        "email": "lynette.bean@pleo.io"
+      },
+      "index": 60
+    },
+    {
+      "id": "5b995dff499a5a7823d7ae3d",
+      "amount": { "value": "1232.26", "currency": "GBP" },
+      "date": "2017-01-19T05:45:23.857Z",
+      "merchant": "QUIZKA",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Ray",
+        "last": "Mendoza",
+        "email": "ray.mendoza@pleo.io"
+      },
+      "index": 61
+    },
+    {
+      "id": "5b995dfffa1aefad04f332f7",
+      "amount": { "value": "1992.91", "currency": "GBP" },
+      "date": "2017-01-07T15:54:40.908Z",
+      "merchant": "POLARIUM",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Juliet",
+        "last": "Holloway",
+        "email": "juliet.holloway@pleo.io"
+      },
+      "index": 62
+    },
+    {
+      "id": "5b995dff5bc6b86420dfa882",
+      "amount": { "value": "2736.02", "currency": "DKK" },
+      "date": "2017-01-01T00:38:45.911Z",
+      "merchant": "PORTALIS",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Reyna",
+        "last": "Delaney",
+        "email": "reyna.delaney@pleo.io"
+      },
+      "index": 63
+    },
+    {
+      "id": "5b995dff57d14443f09d6eb2",
+      "amount": { "value": "2828.01", "currency": "DKK" },
+      "date": "2016-12-30T17:18:26.228Z",
+      "merchant": "TRANSLINK",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Beth",
+        "last": "Landry",
+        "email": "beth.landry@pleo.io"
+      },
+      "index": 64
+    },
+    {
+      "id": "5b995dff0c8cfe07d38da664",
+      "amount": { "value": "2744.58", "currency": "DKK" },
+      "date": "2016-12-26T15:51:43.997Z",
+      "merchant": "ZYTRAC",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Janine",
+        "last": "Terrell",
+        "email": "janine.terrell@pleo.io"
+      },
+      "index": 65
+    },
+    {
+      "id": "5b995dffe67596fc9ccfe9d1",
+      "amount": { "value": "915.18", "currency": "EUR" },
+      "date": "2016-12-18T11:47:08.943Z",
+      "merchant": "MEDESIGN",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Schwartz",
+        "last": "Gentry",
+        "email": "schwartz.gentry@pleo.io"
+      },
+      "index": 66
+    },
+    {
+      "id": "5b995dff87024916e382ff9a",
+      "amount": { "value": "900.47", "currency": "GBP" },
+      "date": "2016-12-17T12:59:13.036Z",
+      "merchant": "ZENSUS",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Ellison",
+        "last": "Gutierrez",
+        "email": "ellison.gutierrez@pleo.io"
+      },
+      "index": 67
+    },
+    {
+      "id": "5b995dff4d8055dcf356f8c1",
+      "amount": { "value": "1802.76", "currency": "EUR" },
+      "date": "2016-12-08T03:18:34.821Z",
+      "merchant": "CANDECOR",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Hicks",
+        "last": "Murphy",
+        "email": "hicks.murphy@pleo.io"
+      },
+      "index": 68
+    },
+    {
+      "id": "5b9960649f83b9fa9bbb8707",
+      "amount": { "value": "3393.58", "currency": "EUR" },
+      "date": "2016-12-06T23:44:04.413Z",
+      "merchant": "BESTO",
+      "receipts": [],
+      "comment": "",
+      "category": "",
+      "user": {
+        "first": "Shana",
+        "last": "Oliver",
+        "email": "shana.oliver@pleo.io"
+      },
+      "index": 69
+    }
+  ],
+  "total": 168
+}

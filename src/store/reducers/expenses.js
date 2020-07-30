@@ -18,6 +18,7 @@ const expenses = (state = initialState, action) => {
       };
     }
     case actions.GET_EXPENSES_SUCCESS: {
+      console.log(action.expenses);
       return {
         ...state,
         expenses: action.expenses,
